@@ -1,0 +1,93 @@
+extends layouts/main-layouts.pug
+
+mixin aracEkle(arac)
+    div.card
+        img.card-img-top(src=`${arac.resim}` alt=`${arac.model}`)
+        div.card-body
+            h5.card-title Arac modeli: #{arac.model}
+            p.card-text Araç Yılı : #{arac.yil}
+            p.card-text Araç Km : #{arac.kilometre}
+            a(href="#").btn.btn-primary Arac Detay
+
+block content
+
+    div.container.pt-100
+        div.row
+            
+            if araclar.length > 0
+                each arac in araclar
+                    +aracEkle(arac)
+                    
+            else 
+                h1 Arac Bulunamadı.
+                
+        div.row.pt-100
+            div.col-md-9 
+            
+        div.row
+            div#map
+            div#dic1 #{aracgps}
+            each arac in araclar
+                h2.araclar #{arac.id}
+                h2.araclar #{arac.model}
+            
+            
+    script.
+        
+        var dic = document.getElementById("dic1").innerHTML;
+        var arac3 = document.getElementsByTagName("h2");
+
+        //alert(arac3.item(1).innerHTML);
+        //const list = document.getElementsByClassName("card-title")[0];
+        //document.getElementById("dic2").innerHTML=dic;
+        dic = JSON.parse(dic);
+
+        //araclar = JSON.parse(araclar);
+        
+     
+        
+
+        function initMap(){
+            var options = {
+                zoom:10,
+                center:{lat:59.46330895,lng:17.91966863}
+            };
+            var map = new google.maps.Map(document.getElementById('map'),options);
+
+            var ensonSayi = dic.length;
+            
+            
+            
+            var i = 0;
+            while(dic.length>i){
+               if(dic[i].arac_id == arac3.item(0).innerHTML){
+                   var marker = new google.maps.Marker({
+                        position:{lat:parseFloat(dic[i].lat),lng:parseFloat(dic[i].lng)},
+                        zoom:7,
+                        map:map,
+                        title : String(arac3.item(1).innerHTML+"\n"+dic[i].tarih),
+                        label: {
+                            text: "\ue530",
+                            fontFamily: "Material Icons",
+                            color: "#ffffff",
+                            fontSize: "18px",
+                            },
+                    });
+               }
+               if(dic[i].arac_id == arac3.item(2).innerHTML){
+                   var marker = new google.maps.Marker({
+                        position:{lat:parseFloat(dic[i].lat),lng:parseFloat(dic[i].lng)},
+                        zoom:7,
+                        map:map,
+                        title : String(arac3.item(3).innerHTML+"\n"+dic[i].tarih),
+                        
+                    });
+               }
+                
+                i+=1;
+            }
+            
+            
+        }
+        
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7oN2a3wUv6GhxxBrhfwztZZ3YJOgWHN0&callback=initMap")

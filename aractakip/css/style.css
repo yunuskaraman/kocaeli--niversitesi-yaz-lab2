@@ -1,0 +1,21 @@
+.pt-100{
+    padding-top: 100px;
+}
+.pt-100 .card{
+    width: 20rem;
+}
+
+.mr-100{
+    margin-right: auto;
+    padding-left: 20px;
+}
+#map{
+    height: 600px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#dic1,.araclar{
+    display: none;
+
+}

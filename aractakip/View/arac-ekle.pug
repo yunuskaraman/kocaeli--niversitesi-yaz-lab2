@@ -1,0 +1,29 @@
+extends layouts/main-layouts.pug
+block content
+ div.container.pt-100
+    div.row
+        form(action="/admin/arac-ekle" method="POST") 
+            
+            div.form-group.row.my-2
+                label( for="model").col-sm-2.col-form-label Arac modeli
+                div.col-sm-10
+                    input( type="text" name="aracModel").form-control#aracModel
+            div.form-group.row
+                label( for="yil").col-sm-2.col-form-label Arac yili
+                div.col-sm-10
+                    input( type="text" name="aracYili").form-control
+            div.form-group.row.my-2
+                label( for="kmetre").col-sm-2.col-form-label Arac km
+                div.col-sm-10
+                    input( type="text" name="aracKm").form-control#aracKm
+            div.form-group.row.my-2
+                label( for="aracResim").col-sm-2.col-form-label Resim
+                div.col-sm-10
+                    input( type="text" name="aracResim").form-control#aracResim
+            div.form-group.row.my-2
+                label( for="m_id").col-sm-2.col-form-label musteri id
+                div.col-sm-10
+                    input( type="text" name="m_id").form-control#m_id
+            div.form-group.row     
+                div.col-sm-10.offset-sm-2.mt-2
+                    input(type="submit" value="Arac Ekle").btn.btn-primary

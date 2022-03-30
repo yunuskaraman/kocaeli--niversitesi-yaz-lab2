@@ -1,0 +1,16 @@
+nav.navbar.navbar-expannpm.d-lg.navbar-dark.bg-secondary.fixed-top
+    div.container
+        a.navbar-brand(href="/") Arac Takip
+
+        ul.navbar-nav.mr-auto.mr-100
+            if isAuthenticated
+                li.navbar-item
+                    a.nav-link(href='harita' class=(path==='/user/harita'?'nav-link active':'nav-link')) Harita
+           
+        ul.navbar-nav.ml-auto
+            if isAuthenticated
+                li.nav-item
+                    a.nav-link(href="/cikis") Çıkış Yap
+            else
+                li.nav-item
+                    a.nav-link(href="/giris") Giriş Yap

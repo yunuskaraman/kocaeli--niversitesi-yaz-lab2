@@ -1,0 +1,23 @@
+extends layouts/main-layouts.pug
+
+mixin aracEkle(arac)
+    div.card
+        img.card-img-top(src=`${arac.resim}` alt=`${arac.model}`)
+        div.card-body
+            h5.card-title Arac modeli: #{arac.model}
+            p.card-text Araç Yılı : #{arac.yil}
+            p.card-text Araç Km : #{arac.kilometre}
+            a(href="#").btn.btn-primary Arac Detay
+
+block content
+
+    div.container.pt-100
+        div.row
+            if araclar.length > 0
+                each arac in araclar
+                    +aracEkle(arac)
+                    
+            else 
+                h1 Arac Bulunamadı.
+                
+        
