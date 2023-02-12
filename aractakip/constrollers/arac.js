@@ -1,8 +1,6 @@
 const Arac = require('../models/araclar');
 const Musteri = require('../models/kullanici');
 const fs = require('fs');
-//magodb sifre "ed2OQwF7H8dHliNe"
-//mango yunuskaraman sifre :"GwCPQjSO7E11AAe1"
 
 exports.getAraclar =(req, res, next) =>{
 
